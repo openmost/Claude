@@ -35,3 +35,7 @@ First release of Claude for Matomo 5.
 - Interface translated into 13 languages.
 - Rate limit of 30 AI requests per hour, per user and per website.
 - Insight requests are restricted to the report methods of the widgets declared by Matomo.
+
+**Compatibility**
+
+- Matomo 5.0.0 or higher, below 6: every Matomo theme variable used by the chat and the insight panel keeps the light theme value of Matomo as a fallback, so the releases without these variables show the light look.

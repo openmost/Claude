@@ -86,7 +86,7 @@ English, Arabic, Chinese (Simplified and Traditional), Dutch, French, German, It
 
 __What are the requirements?__
 
-- Matomo 5.10.0 or higher, below 6
+- Matomo 5.0.0 or higher, below 6
 - An Anthropic API key, or Anthropic connected in AI Providers (bundled with Matomo 5.13 and later)
 - For the agent mode: the McpServer plugin (Matomo 5.8 or higher, PHP 8.1 or higher). On older setups, the chat keeps working without tools.
 
