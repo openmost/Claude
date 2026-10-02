@@ -1,0 +1,34 @@
+{
+    "name": "Claude",
+    "description": "AI chat and insights on any Matomo report with Claude, plus an agent that queries your live data.",
+    "version": "5.0.0",
+    "theme": false,
+    "require": {
+        "matomo": ">=5.10.0,<6.0.0-b1"
+    },
+    "authors": [
+        {
+            "name": "Openmost",
+            "email": "ronan@openmost.com",
+            "homepage": "https://openmost.com"
+        }
+    ],
+    "support": {
+        "email": "ronan@openmost.com",
+        "issues": "https://github.com/openmost/Claude/issues",
+        "source": "https://github.com/openmost/Claude"
+    },
+    "homepage": "https://openmost.com/matomo/extensions/claude",
+    "license": "GPL v3+",
+    "keywords": [
+        "claude",
+        "anthropic",
+        "chat",
+        "ai",
+        "assistant",
+        "agent",
+        "insight",
+        "insights"
+    ],
+    "category": "integration"
+}
