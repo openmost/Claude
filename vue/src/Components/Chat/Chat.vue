@@ -88,7 +88,7 @@ export default defineComponent({
   props: {
     aiName: { type: String, required: true },
     aiLabel: { type: String, required: true },
-    aiColor: { type: String, default: '#3450a3' },
+    aiColor: { type: String, default: '#D97757' },
     apiMethod: { type: String, required: true },
     streamingApiMethod: { type: String, default: 'Claude.getStreamingResponse' },
     widgetParams: { type: Object, default: () => ({}) },
