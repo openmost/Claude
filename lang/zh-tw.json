@@ -114,16 +114,5 @@
         "ApiErrorRateLimitNoDelay": "您的 Anthropic 帳戶已達到請求或支出上限。請稍後再試，或在 Claude Console 中查看上限。",
         "ApiErrorOverloaded": "Anthropic API 暫時過載。請稍後再試一次。",
         "Refused": "Claude 拒絕回答此請求。請嘗試換個方式提問。"
-    },
-    "OpenmostCommunication": {
-        "Dismiss": "關閉",
-        "WidgetName": "Openmost：AI 聊天機器人追蹤設定",
-        "AIChatbotsTitle": "需要協助設定 AI 聊天機器人追蹤嗎？",
-        "AIChatbotsBody": "作為 Matomo 官方 Implementation Partner，Openmost 可以替你設定 AI 聊天機器人追蹤，適用於 Matomo On-Premise 或 Cloud。",
-        "AIChatbotsCta": "請人幫我設定",
-        "TrackingPlanTitle": "事件需要手動設定",
-        "TrackingPlanBody": "事件可以衡量點擊、下載、表單送出或影片播放，前提是已完成追蹤設定。作為 Matomo 官方 Implementation Partner，Openmost 為你的網站設計並實作合適的追蹤計畫。",
-        "TrackingPlanCta": "建立我的追蹤計畫",
-        "EventsEnhancedLink": "使用 Events Enhanced 充分運用你的事件資料"
     }
 }

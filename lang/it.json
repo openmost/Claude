@@ -114,16 +114,5 @@
         "ApiErrorRateLimitNoDelay": "Il tuo account Anthropic ha raggiunto un limite di richieste o di spesa. Riprova più tardi, oppure controlla i limiti nella Claude Console.",
         "ApiErrorOverloaded": "L'API Anthropic è temporaneamente sovraccarica. Riprova tra un momento.",
         "Refused": "Claude ha rifiutato di rispondere a questa richiesta. Prova a riformulare la domanda."
-    },
-    "OpenmostCommunication": {
-        "Dismiss": "Ignora",
-        "WidgetName": "Openmost: configurazione del tracciamento dei chatbot IA",
-        "AIChatbotsTitle": "Serve aiuto per configurare il tracciamento dei chatbot IA?",
-        "AIChatbotsBody": "In qualità di Implementation Partner ufficiale di Matomo, Openmost può configurare il tracciamento dei chatbot IA per voi, su Matomo On-Premise o Cloud.",
-        "AIChatbotsCta": "Richiedi la configurazione",
-        "TrackingPlanTitle": "Gli eventi devono essere configurati manualmente",
-        "TrackingPlanBody": "Gli eventi misurano clic, download, invii di moduli o riproduzioni video, se vengono tracciati. In qualità di Implementation Partner ufficiale di Matomo, Openmost progetta e implementa un piano di tracciamento adatto al vostro sito.",
-        "TrackingPlanCta": "Creare il mio piano di tracciamento",
-        "EventsEnhancedLink": "Ottenete di più dai vostri eventi con Events Enhanced"
     }
 }
