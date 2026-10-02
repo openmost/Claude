@@ -26,11 +26,44 @@ class DefaultPromptsTest extends TestCase
 {
     private const NEW_DEFAULT = 'New default prompt';
 
-    public function test_theFirstRelease_hasNoPreviousDefaultPrompts(): void
+    /**
+     * @dataProvider getLegacyDefaults
+     */
+    public function test_resolve_replacesTheDefaultOfAPreviousVersion_inAnyLanguage(string $kind, string $legacyPrompt): void
     {
-        $this->assertSame([], LegacyPrompts::DEFAULTS[LegacyPrompts::CHAT]);
-        $this->assertSame([], LegacyPrompts::DEFAULTS[LegacyPrompts::INSIGHT]);
-        $this->assertFalse(LegacyPrompts::isLegacyDefault(LegacyPrompts::CHAT, 'You are a Matomo expert.'));
+        $this->assertSame(self::NEW_DEFAULT, DefaultPrompts::resolve($kind, $legacyPrompt, self::NEW_DEFAULT));
+        // the settings form may add spaces or line breaks around the saved value
+        $this->assertSame(self::NEW_DEFAULT, DefaultPrompts::resolve($kind, "  " . $legacyPrompt . "\r\n", self::NEW_DEFAULT));
+        $this->assertTrue(DefaultPrompts::isDefault($kind, $legacyPrompt));
+        $this->assertNull(DefaultPrompts::toStoredGeneralPrompt($kind, $legacyPrompt));
+    }
+
+    public function getLegacyDefaults(): array
+    {
+        $cases = [];
+        foreach (LegacyPrompts::DEFAULTS as $kind => $languages) {
+            foreach ($languages as $language => $prompts) {
+                foreach ($prompts as $index => $prompt) {
+                    $cases["$kind $language $index"] = [$kind, $prompt];
+                }
+            }
+        }
+
+        return $cases;
+    }
+
+    public function test_theLegacyList_coversEveryLanguageOfThePlugin(): void
+    {
+        $languages = array_map(static function (string $file): string {
+            return basename($file, '.json');
+        }, glob(__DIR__ . '/../../lang/*.json'));
+        sort($languages);
+
+        foreach ([LegacyPrompts::CHAT, LegacyPrompts::INSIGHT] as $kind) {
+            $listed = array_keys(LegacyPrompts::DEFAULTS[$kind]);
+            sort($listed);
+            $this->assertSame($languages, $listed, $kind);
+        }
     }
 
     public function test_aCurrentDefault_isNeverAPreviousDefault(): void
@@ -116,6 +149,46 @@ class DefaultPromptsTest extends TestCase
         $this->assertSame('Site prompt', EffectiveSettings::resolvePrompt(LegacyPrompts::CHAT, 'Site prompt', 'General prompt'));
         $this->assertSame('General prompt', EffectiveSettings::resolvePrompt(LegacyPrompts::CHAT, '', 'General prompt'));
         $this->assertSame('General prompt', EffectiveSettings::resolvePrompt(LegacyPrompts::CHAT, "  \n", 'General prompt'));
+        // a previous default saved for the website follows the general prompt
+        $this->assertSame('General prompt', EffectiveSettings::resolvePrompt(LegacyPrompts::CHAT, $this->getPreviousDefault(LegacyPrompts::CHAT, 'fr'), 'General prompt'));
+    }
+
+    public function test_theDefaultPrompts_haveTheRulesOnPartialPeriodsAndComputedFigures(): void
+    {
+        $defaults = $this->getCurrentDefaults();
+        foreach ([LegacyPrompts::CHAT, LegacyPrompts::INSIGHT] as $kind) {
+            $this->assertStringContainsString('includes today or has not ended yet, say that its figures are partial', $defaults[$kind]['en'], $kind);
+            $this->assertStringContainsString('never present a drop against a full previous period as a decline', $defaults[$kind]['en'], $kind);
+            $this->assertStringContainsString('Compute every difference, percentage and ratio from the exact numbers', $defaults[$kind]['en'], $kind);
+            $this->assertStringContainsString('When unsure, show the raw numbers instead of a computed claim.', $defaults[$kind]['en'], $kind);
+        }
+
+        // every language adds the two rules to the previous default: two bullets in the chat, two sentences in the insight
+        foreach ($defaults as $kind => $prompts) {
+            foreach ($prompts as $language => $prompt) {
+                $previous = $this->getPreviousDefault($kind, $language);
+                $added = $kind === LegacyPrompts::CHAT ? 2 : 0;
+                $this->assertNotSame($previous, trim($prompt), "$kind $language");
+                $this->assertSame(substr_count($previous, "\n") + $added, substr_count(trim($prompt), "\n"), "$kind $language");
+                $this->assertGreaterThan(mb_strlen($previous), mb_strlen(trim($prompt)), "$kind $language");
+            }
+        }
+    }
+
+    public function test_thePreviousMultiLineDefault_savedWithCrlfLineBreaks_isUpgraded(): void
+    {
+        $previous = str_replace("\n", "\r\n", $this->getPreviousDefault(LegacyPrompts::CHAT, 'fr'));
+
+        $this->assertSame(self::NEW_DEFAULT, DefaultPrompts::resolve(LegacyPrompts::CHAT, $previous, self::NEW_DEFAULT));
+        $this->assertNull(DefaultPrompts::toStoredGeneralPrompt(LegacyPrompts::CHAT, $previous));
+    }
+
+    public function test_aCustomisedPreviousMultiLineDefault_isKept(): void
+    {
+        $custom = $this->getPreviousDefault(LegacyPrompts::CHAT, 'en') . "\n- Always answer in French.";
+
+        $this->assertSame($custom, DefaultPrompts::resolve(LegacyPrompts::CHAT, $custom, self::NEW_DEFAULT));
+        $this->assertSame($custom, DefaultPrompts::toStoredGeneralPrompt(LegacyPrompts::CHAT, $custom));
     }
 
     public function getKinds(): array
@@ -124,6 +197,16 @@ class DefaultPromptsTest extends TestCase
             'chat' => [LegacyPrompts::CHAT],
             'insight' => [LegacyPrompts::INSIGHT],
         ];
+    }
+
+    /**
+     * The default prompt of the version before the rules on partial periods and computed figures
+     */
+    private function getPreviousDefault(string $kind, string $language): string
+    {
+        $prompts = LegacyPrompts::DEFAULTS[$kind][$language];
+
+        return (string) end($prompts);
     }
 
     /**

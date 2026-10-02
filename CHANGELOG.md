@@ -29,6 +29,7 @@ First release of Claude for Matomo 5.
 - *Administration > System > Claude* for the general settings, with a *Connection* card and a *Prompts* card saved separately, a *Delete key* button and a *Reset to default* button for the prompts.
 - *Administration > Websites > Claude* to override the settings of a website.
 - Default prompts written for analytics, never stored, so their future improvements reach every install that did not customise them.
+- The default prompts ask the assistant to flag the figures of a period that has not ended yet as partial and to compare the same number of elapsed days instead of calling a drop a decline, and to compute every difference, percentage and ratio from the exact numbers.
 
 **More**
 
