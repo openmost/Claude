@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="Claude for Matomo">
+  <rect width="256" height="256" rx="56" fill="#D97757"/>
+  <g transform="translate(128 128) scale(8.4) translate(-12 -12)">
+    <path d="M12 9.6V1.8M13.57 10.19L16.99 6.26M14.28 11.26L21.7 8.85M14.28 12.74L19.23 14.35M13.24 14.06L17.25 20.74M12 14.4V19.6M10.59 13.94L6 20.25M9.66 12.54L4.59 13.71M9.72 11.26L2.3 8.85M10.59 10.06L7.53 5.85" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+  </g>
+</svg>

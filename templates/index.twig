@@ -1,0 +1,27 @@
+{% extends 'dashboard.twig' %}
+
+{% block content %}
+
+    {% if is_configured %}
+
+        <div vue-entry="Claude.ChatIndexPage"
+             ai-name="claude"
+             ai-label="Claude"
+             ai-color="#D97757"
+             api-method="Claude.getResponse"
+             model-notice="{{ model_notice|json_encode|e('html_attr') }}"
+        ></div>
+
+    {% else %}
+
+        <div class="alert alert-info">
+            <strong>{{ 'Claude_PluginNotConfigured'|translate }}</strong>
+            {{ 'Claude_PluginNotConfiguredDescription'|translate }}
+            {% if settings_url %}
+                <a href="{{ settings_url }}">{{ 'Claude_SystemSettingsLink'|translate }}</a>
+            {% endif %}
+        </div>
+
+    {% endif %}
+
+{% endblock %}
