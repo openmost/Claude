@@ -12,7 +12,7 @@
     host.setAttribute('vue-entry', 'Claude.InsightOverlay');
     host.setAttribute('ai-name', 'claude');
     host.setAttribute('ai-label', 'Claude');
-    host.setAttribute('ai-color', '#D97757');
+    host.setAttribute('ai-color', '#C15F3C');
     host.setAttribute('api-method', 'Claude.getInsights');
     document.body.appendChild(host);
 
@@ -42,7 +42,7 @@
     insightTrigger.setAttribute('widget-params', JSON.stringify(parameters));
     insightTrigger.setAttribute('ai-name', 'claude');
     insightTrigger.setAttribute('ai-label', 'Claude');
-    insightTrigger.setAttribute('ai-color', '#D97757');
+    insightTrigger.setAttribute('ai-color', '#C15F3C');
     insightTrigger.setAttribute('report-title', reportTitle);
     titleWrapper.append(insightTrigger);
 
