@@ -1,5 +1,9 @@
 ## Changelog
 
+### 5.1.1
+
+- README: the plugin description now shows in the Description tab of the Matomo Marketplace.
+
 ### 5.1.0
 
 > **Action required.** Nothing is sent to the AI provider any more until a super user checks *Allow sending Matomo data to the AI provider* in *Administration > System > Claude*, Privacy card. Until then, the chat and the insights ask users to contact a super user.

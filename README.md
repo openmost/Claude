@@ -1,10 +1,12 @@
 # Claude for Matomo
 
+## Description
+
 Ask questions about your analytics and get AI insights on any Matomo report with Claude by Anthropic, plus an optional agent that queries your live reports through the Matomo MCP tools.
 
-## Features
+### Features
 
-### Insights on any report
+#### Insights on any report
 
 - An **Insights** button (AI icon) next to the report header opens an insight panel that analyses the report you are looking at, then lets you ask follow-up questions.
 - The whole report is analysed, not only the rows visible on screen: the plugin sends a compact payload with the rows, the report totals and the names and units of the metrics.
@@ -13,7 +15,7 @@ Ask questions about your analytics and get AI insights on any Matomo report with
 - When a widget has no report data, or the report cannot be loaded (for example a missing access), a clear message is displayed instead of sending the error to the model.
 - The panel is an accessible dialog: keyboard navigation, focus kept inside the panel, Escape to close. Opening it closes the insight panel of the other Openmost AI plugins, so two panels never overlap.
 
-### Chat
+#### Chat
 
 - A **Claude** page in the main menu, with suggested questions to start a conversation and a "New conversation" button.
 - Streaming answers, with an automatic fallback when the endpoint does not stream.
@@ -21,7 +23,7 @@ Ask questions about your analytics and get AI insights on any Matomo report with
 - Markdown answers with scrollable tables and code blocks, and buttons to copy an answer or a code block.
 - Enter sends the message, Shift+Enter adds a new line.
 
-### Agent mode, with MCP Server
+#### Agent mode, with MCP Server
 
 When the **McpServer** plugin is enabled, the chat and the insight panel work as an agent, with the Anthropic key of the plugin settings or with the Anthropic provider of **AI Providers**:
 
@@ -33,7 +35,7 @@ When the **McpServer** plugin is enabled, the chat and the insight panel work as
 
 The agent mode is optional. Without McpServer, Claude answers without tools.
 
-### Connection and models
+#### Connection and models
 
 - Uses the Anthropic Messages API (`https://api.anthropic.com/v1/messages`) with your Anthropic API key, or the **Anthropic** provider connected in **AI Providers**.
 - **One key is enough**, used in this order: the API key set for the website, then AI Providers when its provider is Anthropic, then the general API key of the plugin. The credential of another AI Providers provider is never used. Keys are never copied from one place to another.
@@ -43,26 +45,26 @@ The agent mode is optional. Without McpServer, Claude answers without tools.
 - Preset models: **Latest recommended** (the default, which follows the model recommended by each plugin release, currently Claude Sonnet 5.5), Claude Sonnet 5.5, Claude Opus 5.5, Claude Fable 5.1, Claude Haiku 4.5 and the previous models Anthropic still serves, or any custom model name.
 - When a model is deprecated, retired or not available to your Anthropic account, the chat explains it and links to the settings instead of showing the raw API error. An invalid key, a rate limit and an overloaded API are explained in the language of the user too.
 
-### Prompts
+#### Prompts
 
 - Default prompts written for analytics: the chat answers as a senior analytics consultant (direct answer, key figures, prioritised recommendations, no invented figures), and insights follow a fixed structure (summary, key figures, notable patterns, recommendations).
 - A prompt equal to the default is not stored, so future improvements of the defaults reach you. A **Reset to default** button restores the default prompts. Custom prompts are kept.
 
-### More
+#### More
 
 - Interface translated into 13 languages: English, Arabic, Chinese (Simplified and Traditional), Dutch, French, German, Italian, Japanese, Polish, Portuguese, Spanish and Swedish.
 - Follows the Matomo light and dark themes.
 - Rate limit of 30 AI requests per hour, per user and per website.
 - HTTP API: `Claude.getResponse`, `Claude.getStreamingResponse`, `Claude.getInsights`, `Claude.getSiteSettings`, `Claude.setSiteSettings` and `Claude.setSystemSettings`.
 
-## Requirements
+### Requirements
 
 - Matomo 5.0.0 or higher, below 6 (`>=5.0.0,<6.0.0-b1`).
 - PHP: the version required by your Matomo 5 (PHP 8.1 or higher for the agent mode, required by McpServer)
 - One of: an Anthropic API key, an HTTPS proxy or gateway serving the Anthropic Messages API, or the Anthropic provider connected in AI Providers
 - Optional, for the agent mode: the **McpServer** plugin from the Marketplace (Matomo 5.8 or higher, PHP 8.1 or higher). On older setups the agent mode is not offered and the chat keeps working without tools. The **AI Providers** plugin, bundled with Matomo 5.13 and later, is only needed to use its Anthropic provider instead of a key in the plugin settings. Write actions also require write methods to be allowed in the McpServer settings (Raw Matomo API tool access).
 
-## Installation / Configuration
+### Installation / Configuration
 
 1. Install and activate **Claude** from **Administration > Platform > Marketplace**.
 2. As a super user, open **Administration > System > Claude**:
@@ -75,7 +77,7 @@ The agent mode is optional. Without McpServer, Claude answers without tools.
 
 Then open the **Claude** page in the main menu, or click the **Insights** button in the header of a report.
 
-## Privacy and data
+### Privacy and data
 
 - Insights send the data of the report you are looking at (labels, metrics and totals), its period, segment and comparisons, and the conversation, to the configured endpoint: the Anthropic API by default, your custom host, or the Anthropic provider of AI Providers.
 - The chat sends your messages and the prompt. In agent mode, the results of the Matomo tools the agent calls are also sent to Anthropic.
@@ -88,7 +90,7 @@ Then open the **Claude** page in the main menu, or click the **Insights** button
 - Insight requests are restricted to the report and data methods of widgets declared by Matomo, never to an arbitrary API method, and run with the permissions of the current user.
 - API keys are stored in the Matomo settings and are never sent back to the browser. Conversations are not stored by the plugin.
 
-## Need help with Matomo?
+### Need help with Matomo?
 
 Openmost is an official Matomo Implementation Partner. We connect Matomo to AI assistants, BI tools and the rest of your stack with [Matomo integrations](https://openmost.com/matomo/services/integration?utm_source=matomo_marketplace&utm_medium=referral&utm_campaign=services&utm_content=claude) built on official APIs, with documented and privacy-checked data flows.
 

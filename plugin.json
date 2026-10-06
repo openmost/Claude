@@ -1,7 +1,7 @@
 {
     "name": "Claude",
     "description": "AI chat and insights on any Matomo report with Claude, plus an agent that queries your live data.",
-    "version": "5.1.0",
+    "version": "5.1.1",
     "theme": false,
     "require": {
         "matomo": ">=5.0.0,<6.0.0-b1"
