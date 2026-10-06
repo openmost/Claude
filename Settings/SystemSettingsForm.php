@@ -92,6 +92,22 @@ final class SystemSettingsForm
     }
 
     /**
+     * Where the data goes, displayed above the privacy settings so the super user knows what the consent covers
+     *
+     * @return list<string>
+     */
+    public function getDataDestination(): array
+    {
+        if ($this->settings->isTakenOverByAiProviders()) {
+            $destination = Piwik::translate('Claude_DataDestinationAiProviders', 'Anthropic');
+        } else {
+            $destination = Piwik::translate('Claude_DataDestinationHost', SingleValue::toString($this->settings->host->getValue()));
+        }
+
+        return [$destination, Piwik::translate('Claude_DataDestinationSiteHosts')];
+    }
+
+    /**
      * @return array<string, string> setting name => value, the saved API key replaced by a placeholder
      */
     public function getValues(): array
@@ -184,6 +200,10 @@ final class SystemSettingsForm
             'modelCustom' => $this->settings->modelCustom,
             'chatBasePrompt' => $this->settings->chatBasePrompt,
             'insightBasePrompt' => $this->settings->insightBasePrompt,
+            'dataSharingAllowed' => $this->settings->dataSharingAllowed,
+            'maskPersonalData' => $this->settings->maskPersonalData,
+            'stripUrlQueryStrings' => $this->settings->stripUrlQueryStrings,
+            'excludeVisitorData' => $this->settings->excludeVisitorData,
         ];
     }
 }

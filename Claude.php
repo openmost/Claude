@@ -49,6 +49,8 @@ class Claude extends \Piwik\Plugin
         $translationKeys[] = 'Claude_SystemSettingsIntro';
         $translationKeys[] = 'Claude_SystemSettingsLink';
         $translationKeys[] = 'Claude_SettingsConnectionTitle';
+        $translationKeys[] = 'Claude_SettingsPrivacyTitle';
+        $translationKeys[] = 'Claude_PrivacySettingsIntro';
         $translationKeys[] = 'Claude_SettingsPromptsTitle';
         $translationKeys[] = 'Claude_ResetPromptToDefault';
         $translationKeys[] = 'Claude_ResetPromptToDefaultHelp';
@@ -75,6 +77,7 @@ class Claude extends \Piwik\Plugin
         $translationKeys[] = 'Claude_AgentStepError';
         $translationKeys[] = 'Claude_EmptyStateTitle';
         $translationKeys[] = 'Claude_EmptyStateText';
+        $translationKeys[] = 'Claude_DataNotice';
         $translationKeys[] = 'Claude_SuggestionsLabel';
         $translationKeys[] = 'Claude_SuggestionWeeklyKpis';
         $translationKeys[] = 'Claude_SuggestionTopPages';

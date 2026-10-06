@@ -11,6 +11,7 @@ namespace Piwik\Plugins\Claude\tests\Fakes;
 use Piwik\Plugins\AIProviders\AIConversationRequest;
 use Piwik\Plugins\AIProviders\AIConversationResponse;
 use Piwik\Plugins\Claude\Agent\McpAgent;
+use Piwik\Plugins\Claude\Services\DataPrivacy;
 use Piwik\Plugins\Claude\Settings\EffectiveSettings;
 
 /**
@@ -76,6 +77,14 @@ class ScriptedMcpAgent extends McpAgent
         $this->requests[] = $request;
 
         return array_shift($this->responses);
+    }
+
+    /** @var array<string, bool> privacy settings, the defaults when empty */
+    public $privacyOptions = [];
+
+    protected function getPrivacy(): DataPrivacy
+    {
+        return new DataPrivacy($this->privacyOptions);
     }
 
     protected function fetchToolCatalog(): array

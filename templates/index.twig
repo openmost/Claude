@@ -2,7 +2,19 @@
 
 {% block content %}
 
-    {% if is_configured %}
+    {% if is_configured and not data_sharing_allowed %}
+
+        <div class="alert alert-info">
+            <strong>{{ 'Claude_DataSharingNotAllowedTitle'|translate }}</strong>
+            {{ 'Claude_DataSharingNotAllowed'|translate }}
+            {% if settings_url %}
+                <a href="{{ settings_url }}#claudePrivacy">{{ 'Claude_DataSharingSettingsLink'|translate }}</a>
+            {% else %}
+                {{ 'Claude_AskAdministrator'|translate }}
+            {% endif %}
+        </div>
+
+    {% elseif is_configured %}
 
         <div vue-entry="Claude.ChatIndexPage"
              ai-name="claude"

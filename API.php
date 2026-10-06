@@ -18,6 +18,7 @@ use Piwik\Plugins\Claude\Agent\AnthropicFormat;
 use Piwik\Plugins\Claude\Agent\McpAgent;
 use Piwik\Plugins\Claude\Services\ApiConnection;
 use Piwik\Plugins\Claude\Services\ChatRequestParser;
+use Piwik\Plugins\Claude\Services\DataPrivacy;
 use Piwik\Plugins\Claude\Services\InsightNotAvailableException;
 use Piwik\Plugins\Claude\Services\InsightReport;
 use Piwik\Plugins\Claude\Services\RateLimitExceededException;
@@ -91,6 +92,11 @@ class API extends \Piwik\Plugin\API
         // Get messages from request if not passed or if passed as JSON string
         $messages = $this->requestParser->parseMessages($messages);
 
+        $dataSharingError = $this->getDataSharingError();
+        if ($dataSharingError !== null) {
+            return ['error' => $dataSharingError];
+        }
+
         $rateLimitError = $this->getRateLimitError($idSite);
         if ($rateLimitError !== null) {
             return ['error' => $rateLimitError];
@@ -116,6 +122,11 @@ class API extends \Piwik\Plugin\API
         // Parse messages and widgetParams from POST
         $messages = $this->requestParser->parseMessages($messages);
         $widgetParams = $this->requestParser->parseWidgetParams($widgetParams);
+
+        $dataSharingError = $this->getDataSharingError();
+        if ($dataSharingError !== null) {
+            return ['error' => $dataSharingError];
+        }
 
         $rateLimitError = $this->getRateLimitError($idSite);
         if ($rateLimitError !== null) {
@@ -152,6 +163,12 @@ class API extends \Piwik\Plugin\API
         // Parse messages and widgetParams from POST
         $messages = $this->requestParser->parseMessages($messages);
         $widgetParams = $this->requestParser->parseWidgetParams($widgetParams);
+
+        $dataSharingError = $this->getDataSharingError();
+        if ($dataSharingError !== null) {
+            $this->streamAnswer(['error' => $dataSharingError]);
+            return;
+        }
 
         $rateLimitError = $this->getRateLimitError($idSite);
         if ($rateLimitError !== null) {
@@ -295,6 +312,7 @@ class API extends \Piwik\Plugin\API
      *
      * @param string|null $apiKey the placeholder of the settings page keeps the saved key, like an empty value
      * @param bool $deleteApiKey removes the saved API key, the only way to remove it
+     * @param string|null $dataSharingAllowed "1" lets the plugin send Matomo data to the AI provider, off by default
      */
     public function setSystemSettings(
         ?string $host = null,
@@ -303,7 +321,11 @@ class API extends \Piwik\Plugin\API
         ?string $modelCustom = null,
         ?string $chatBasePrompt = null,
         ?string $insightBasePrompt = null,
-        bool $deleteApiKey = false
+        bool $deleteApiKey = false,
+        ?string $dataSharingAllowed = null,
+        ?string $maskPersonalData = null,
+        ?string $stripUrlQueryStrings = null,
+        ?string $excludeVisitorData = null
     ): bool {
         Piwik::checkUserHasSuperUserAccess();
 
@@ -314,6 +336,10 @@ class API extends \Piwik\Plugin\API
             'modelCustom' => $modelCustom,
             'chatBasePrompt' => $chatBasePrompt,
             'insightBasePrompt' => $insightBasePrompt,
+            'dataSharingAllowed' => $dataSharingAllowed,
+            'maskPersonalData' => $maskPersonalData,
+            'stripUrlQueryStrings' => $stripUrlQueryStrings,
+            'excludeVisitorData' => $excludeVisitorData,
         ];
         foreach ($values as $name => $value) {
             if ($value !== null) {
@@ -546,6 +572,18 @@ class API extends \Piwik\Plugin\API
      *
      * @return array{message: string}|null
      */
+    /**
+     * The error displayed instead of an answer while a super user has not allowed sending Matomo data to the provider
+     *
+     * @return array{message: string}|null
+     */
+    private function getDataSharingError(): ?array
+    {
+        $message = StaticContainer::get(DataPrivacy::class)->getDataSharingError();
+
+        return $message === null ? null : ['message' => $message];
+    }
+
     private function getRateLimitError(int $idSite): ?array
     {
         try {
