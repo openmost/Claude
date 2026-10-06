@@ -116,7 +116,7 @@ class McpAgentAnthropicTest extends TestCase
         ];
         $this->agent->toolResults = [
             ['content' => [['type' => 'text', 'text' => 'Site 1']], 'structuredContent' => null, 'isError' => false],
-            new \RuntimeException('Unknown method'),
+            ['content' => [['type' => 'text', 'text' => 'Unknown method']], 'structuredContent' => null, 'isError' => true],
         ];
 
         $this->runAgent([['role' => 'user', 'content' => 'How many visits?']]);

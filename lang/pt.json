@@ -99,6 +99,7 @@
         "AgentStepError": "Falhou",
         "EmptyStateTitle": "O que quer saber sobre o seu tráfego?",
         "EmptyStateText": "Pergunte ao %s sobre as suas estatísticas ou comece por uma destas perguntas.",
+        "DataNotice": "As suas perguntas, e os dados do Matomo lidos para lhes responder (relatórios, títulos de páginas, referências...), são enviados para o fornecedor de IA configurado pelo seu administrador do Matomo.",
         "SuggestionsLabel": "Perguntas sugeridas",
         "SuggestionWeeklyKpis": "Resume as minhas métricas principais desta semana",
         "SuggestionTopPages": "Que páginas tiveram mais visualizações?",
@@ -113,6 +114,23 @@
         "ApiErrorRateLimit": "A sua conta Anthropic envia demasiados pedidos. Tente novamente dentro de %s segundos.",
         "ApiErrorRateLimitNoDelay": "A sua conta Anthropic atingiu um limite de pedidos ou de despesa. Tente novamente mais tarde, ou verifique os limites na Claude Console.",
         "ApiErrorOverloaded": "A API da Anthropic está temporariamente sobrecarregada. Tente novamente dentro de momentos.",
-        "Refused": "O Claude recusou-se a responder a este pedido. Tente reformular a sua pergunta."
+        "Refused": "O Claude recusou-se a responder a este pedido. Tente reformular a sua pergunta.",
+        "SettingsPrivacyTitle": "Privacidade",
+        "PrivacySettingsIntro": "Tudo o que é enviado para o fornecedor de IA sai deste Matomo: as perguntas, os prompts, os dados de relatório dos insights e, no modo agente, os resultados das ferramentas do Matomo. O fornecedor processa estes dados e pode conservá-los segundo as suas próprias condições: verifique a sua política de conservação de dados e de privacidade antes de o permitir.",
+        "DataDestinationHost": "Destino: %s",
+        "DataDestinationAiProviders": "Destino: o fornecedor %s ligado em AI Providers, com as suas próprias definições e condições.",
+        "DataDestinationSiteHosts": "Um site com o seu próprio host nas definições de Claude envia os seus dados para esse host.",
+        "PrivacySetting_dataSharingAllowed": "Permitir o envio de dados do Matomo para o fornecedor de IA",
+        "PrivacySetting_dataSharingAllowedHelp": "Desativado por predefinição: o chat e os insights ficam indisponíveis, e nada é enviado, até que um superutilizador o permita.",
+        "PrivacySetting_maskPersonalData": "Ocultar os endereços de e-mail e IP",
+        "PrivacySetting_maskPersonalDataHelp": "Substitui os endereços de e-mail e IP encontrados nos dados de relatório e nos resultados das ferramentas por [email] e [ip] antes de os enviar.",
+        "PrivacySetting_stripUrlQueryStrings": "Remover os parâmetros dos URL",
+        "PrivacySetting_stripUrlQueryStringsHelp": "Remove os parâmetros após o ? dos URL, que podem conter identificadores ou tokens, antes de os enviar.",
+        "PrivacySetting_excludeVisitorData": "Excluir os dados ao nível do visitante",
+        "PrivacySetting_excludeVisitorDataHelp": "Os insights e o agente não podem ler o registo de visitas, os perfis de visitante, os relatórios em tempo real nem os User ID.",
+        "VisitorDataExcluded": "As definições de privacidade excluem os dados ao nível do visitante: os insights não estão disponíveis para este relatório.",
+        "DataSharingNotAllowedTitle": "A partilha de dados ainda não está permitida.",
+        "DataSharingNotAllowed": "Nada é enviado para o fornecedor de IA até que um superutilizador o permita (definições gerais de Claude, secção Privacidade).",
+        "DataSharingSettingsLink": "Abrir as definições de privacidade"
     }
 }
