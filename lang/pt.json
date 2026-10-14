@@ -132,5 +132,16 @@
         "DataSharingNotAllowedTitle": "A partilha de dados ainda não está permitida.",
         "DataSharingNotAllowed": "Nada é enviado para o fornecedor de IA até que um superutilizador o permita (definições gerais de Claude, secção Privacidade).",
         "DataSharingSettingsLink": "Abrir as definições de privacidade"
+    },
+    "OpenmostCommunication": {
+        "Dismiss": "Dispensar",
+        "WidgetName": "Openmost: configuração do seguimento de chatbots de IA",
+        "AIChatbotsTitle": "Precisa de ajuda para configurar o seguimento de chatbots de IA?",
+        "AIChatbotsBody": "Como Implementation Partner oficial da Matomo, a Openmost pode configurar o seguimento de chatbots de IA por si, no Matomo On-Premise ou Cloud.",
+        "AIChatbotsCta": "Pedir a configuração",
+        "TrackingPlanTitle": "Os eventos têm de ser configurados manualmente",
+        "TrackingPlanBody": "Os eventos medem cliques, transferências, envios de formulários ou reproduções de vídeo, desde que sejam seguidos. Como Implementation Partner oficial da Matomo, a Openmost concebe e implementa um plano de marcação adaptado ao seu site.",
+        "TrackingPlanCta": "Criar o meu plano de marcação",
+        "EventsEnhancedLink": "Tire mais partido dos seus eventos com o Events Enhanced"
     }
 }

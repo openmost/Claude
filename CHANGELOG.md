@@ -1,5 +1,9 @@
 ## Changelog
 
+### 6.1.2
+
+- Documentation update.
+
 ### 6.1.1
 
 - README: the plugin description now shows in the Description tab of the Matomo Marketplace.

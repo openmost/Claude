@@ -132,5 +132,16 @@
         "DataSharingNotAllowedTitle": "لم يُسمح بمشاركة البيانات بعد.",
         "DataSharingNotAllowed": "لا يُرسل أي شيء إلى مزوّد الذكاء الاصطناعي حتى يسمح بذلك مستخدم خارق في الإعدادات العامة لـ Claude، قسم الخصوصية.",
         "DataSharingSettingsLink": "فتح إعدادات الخصوصية"
+    },
+    "OpenmostCommunication": {
+        "Dismiss": "تجاهل",
+        "WidgetName": "Openmost: إعداد تتبع روبوتات الدردشة بالذكاء الاصطناعي",
+        "AIChatbotsTitle": "هل تحتاج إلى مساعدة في إعداد تتبع روبوتات الدردشة بالذكاء الاصطناعي؟",
+        "AIChatbotsBody": "بصفتها شريك تنفيذ رسمياً لـ Matomo (Implementation Partner)، يمكن لـ Openmost إعداد تتبع روبوتات الدردشة بالذكاء الاصطناعي نيابةً عنك، على Matomo On-Premise أو Cloud.",
+        "AIChatbotsCta": "اطلب إعداده لي",
+        "TrackingPlanTitle": "يجب إعداد الأحداث يدوياً",
+        "TrackingPlanBody": "تقيس الأحداث النقرات والتنزيلات وإرسال النماذج وتشغيل الفيديو، بشرط أن يتم تتبعها. بصفتها شريك تنفيذ رسمياً لـ Matomo (Implementation Partner)، تصمم Openmost خطة تتبع مناسبة لموقعك وتنفذها.",
+        "TrackingPlanCta": "أنشئ خطة التتبع الخاصة بي",
+        "EventsEnhancedLink": "استفد أكثر من أحداثك مع Events Enhanced"
     }
 }

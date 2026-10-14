@@ -132,5 +132,16 @@
         "DataSharingNotAllowedTitle": "Het delen van gegevens is nog niet toegestaan.",
         "DataSharingNotAllowed": "Er wordt niets naar de AI-aanbieder verzonden totdat een superuser het toestaat in de algemene instellingen van Claude, sectie Privacy.",
         "DataSharingSettingsLink": "Privacy-instellingen openen"
+    },
+    "OpenmostCommunication": {
+        "Dismiss": "Sluiten",
+        "WidgetName": "Openmost: instellen van AI-chatbottracking",
+        "AIChatbotsTitle": "Hulp nodig bij het instellen van AI-chatbottracking?",
+        "AIChatbotsBody": "Als officieel Matomo Implementation Partner kan Openmost AI-chatbottracking voor u instellen, op Matomo On-Premise of Cloud.",
+        "AIChatbotsCta": "Laat het voor mij instellen",
+        "TrackingPlanTitle": "Gebeurtenissen moeten handmatig worden ingesteld",
+        "TrackingPlanBody": "Gebeurtenissen meten klikken, downloads, formulierverzendingen of videoweergaven, zodra ze worden gemeten. Als officieel Matomo Implementation Partner ontwerpt en implementeert Openmost een trackingplan dat bij uw site past.",
+        "TrackingPlanCta": "Mijn trackingplan opstellen",
+        "EventsEnhancedLink": "Haal meer uit uw gebeurtenissen met Events Enhanced"
     }
 }
