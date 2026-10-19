@@ -86,7 +86,6 @@ class API extends \Piwik\Plugin\API
     {
         Piwik::checkUserHasSomeViewAccess();
 
-        $idSite = (int) Common::getRequestVar('idSite');
         Piwik::checkUserHasViewAccess($idSite);
 
         // Get messages from request if not passed or if passed as JSON string
@@ -116,7 +115,6 @@ class API extends \Piwik\Plugin\API
     {
         Piwik::checkUserHasSomeViewAccess();
 
-        $idSite = (int) Common::getRequestVar('idSite');
         Piwik::checkUserHasViewAccess($idSite);
 
         // Parse messages and widgetParams from POST
@@ -157,7 +155,6 @@ class API extends \Piwik\Plugin\API
     {
         Piwik::checkUserHasSomeViewAccess();
 
-        $idSite = (int) Common::getRequestVar('idSite');
         Piwik::checkUserHasViewAccess($idSite);
 
         // Parse messages and widgetParams from POST
