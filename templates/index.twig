@@ -18,7 +18,7 @@
 
         <div vue-entry="Claude.ChatIndexPage"
              ai-name="claude"
-             ai-label="Claude"
+             ai-label="{{ display_name }}"
              ai-color="#D97757"
              api-method="Claude.getResponse"
              model-notice="{{ model_notice|json_encode|e('html_attr') }}"
